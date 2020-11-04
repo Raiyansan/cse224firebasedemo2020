@@ -10,7 +10,6 @@
     appId: "1:497534615854:web:7435b108f4da148c49babf"
   };
   // Initialize Firebase
-  //comment
   firebase.initializeApp(firebaseConfig);
 
 
