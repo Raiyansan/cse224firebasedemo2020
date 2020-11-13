@@ -1,71 +1,80 @@
 // Firstly, the Firebase configuration
-  var firebaseConfig = {
-	  //add your own firebase config here
-    apiKey: "AIzaSyCCABDZSqwY0tc8Jq6ZA2HD4mA_ftwlAjA",
-    authDomain: "contacttest-b251f.firebaseapp.com",
-    databaseURL: "https://contacttest-b251f.firebaseio.com",
-    projectId: "contacttest-b251f",
-    storageBucket: "",
-    messagingSenderId: "497534615854",
-    appId: "1:497534615854:web:7435b108f4da148c49babf"
-  };
+var firebaseConfig = {
+  apiKey: "AIzaSyBiaTGEigduDuEBfKUWRxJv1_wsGpFgICU",
+  authDomain: "cse224dbdemo.firebaseapp.com",
+  databaseURL: "https://cse224dbdemo.firebaseio.com",
+  projectId: "cse224dbdemo",
+  storageBucket: "cse224dbdemo.appspot.com",
+  messagingSenderId: "210338768190",
+  appId: "1:210338768190:web:485c62d7c5583ec0fcf86f"
+};
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-
 // Reference messages collection
-var messagesRef = firebase.database().ref('messages');
+var messagesRef = firebase.database().ref("messages");
+
 
 // Listen for form submit
 document.getElementById('contactForm').addEventListener('submit', submitForm);
 
+
+
 // Submit form function here
-function submitForm(e){
+function submitForm(e) {
+
   e.preventDefault();
 
+
   // Get values
-  var name = document.getElementById('name').value; //getInputVal('name');
-  var company = getInputVal('company');
-  var email = getInputVal('email');
-  var phone = getInputVal('phone');
-  var message = getInputVal('message');
+
+  var name = document.getElementById('name').value;
+  var company = document.getElementById('company').value;
+  var email = document.getElementById('email').value;
+  var phone = document.getElementById('phone').value;
+  var message = document.getElementById('message').value;
 
   // Save message
-  saveMessage(name, company, email, phone, message);
+  saveMessage (name, email, phone, company, message);
+
 
   // Show alert
-  document.querySelector('.alert').style.display = 'block';
+  document.querySelector('.alert').style.display='block';
 
   // Hide alert after 3 seconds
   setTimeout(function(){
-    document.querySelector('.alert').style.display = 'none';
-  },3000);
+    document.querySelector('.alert').style.display='none';
+  }, 3000);
+ 
+
 
   // Clear form
-  document.getElementById('contactForm').reset();
+  document.getElementsByID('contactForm').reset();
+
 
   //redirect to home page
-
   setTimeout(function(){
     document.location.href="./index.html";
   },3050);
 
-  
 }
 
-// Function to get get form values
-function getInputVal(id){
-  return document.getElementById(id).value;
-}
+
 
 // Save message to firebase
-function saveMessage(name, company, email, phone, message){
+function saveMessage (name, email, phone, company, message){
+
   var newMessageRef = messagesRef.push();
   newMessageRef.set({
     name: name,
-    company:company,
-    email:email,
-    phone:phone,
-    message:message
-  });
+    compnay: company,
+    email: email,
+    contact: phone,
+    message: message
+  }
+
+  
+  );
+
+
 }
